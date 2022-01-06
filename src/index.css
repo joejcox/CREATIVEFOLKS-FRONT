@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+  @apply text-[70px] font-primary font-extralight leading-[82px] text-center;
+}
+
+.footer-link {
+  @apply font-primary uppercase font-bold leading-[41px] text-[35px] block text-dark hover:text-primary;
+}

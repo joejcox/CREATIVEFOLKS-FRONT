@@ -27,6 +27,13 @@ module.exports = {
         search: "371px",
         button: "218px",
       },
+      container: {
+        center: true,
+        padding: "20px",
+        screens: {
+          xl: "1760px",
+        },
+      },
       height: {
         header: "248px",
         search: "68px",
