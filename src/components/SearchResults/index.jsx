@@ -2,31 +2,47 @@ import { useState, useEffect } from "react"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import axios from "axios"
 import GridImage from "components/SearchResults/GridImage"
+import GridSkeleton from "components/SearchResults/GridSkeleton"
 
 const SearchResults = ({ query }) => {
   const [images, setImages] = useState(null)
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const getImages = async () => {
       if (!query) return
+      let page = 1
+      const total_pages = Number(localStorage.getItem("pages"))
 
-      const api = `https://api.unsplash.com/search/photos/?page=1&per_page=25&order_by=relevent&query=${query}&client_id=Lqbsqom97TAc1uKvT_AUoVQLcIauXsPzpW4e1xfS2Cg`
+      const randomNumber = (max, min) => {
+        return Math.random() * (max - min) + min
+      }
+
+      if (total_pages) {
+        page = randomNumber(1, total_pages + 1)
+      }
+
+      const api = `https://api.unsplash.com/search/photos/?page=${page}&per_page=25&order_by=relevent&query=${query}&client_id=Lqbsqom97TAc1uKvT_AUoVQLcIauXsPzpW4e1xfS2Cg`
 
       try {
         const response = await axios.get(api)
-        console.log(response.data)
+        localStorage.setItem("pages", response.data.total_pages)
         setImages(response)
       } catch (error) {
         console.log(error)
         setError(true)
       }
+
+      setLoading(false)
     }
 
     getImages()
   }, [query])
 
   if (error) return <h2 className="text-3xl">Some error</h2>
+
+  if (loading) return <GridSkeleton />
 
   if (!images) return null
 
