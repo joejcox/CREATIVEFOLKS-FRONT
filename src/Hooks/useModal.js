@@ -9,7 +9,6 @@ const useModal = () => {
 
   const closeModal = () => {
     setIsOpen(false)
-    console.log("close")
   }
 
   return { openModal, closeModal, modalIsOpen }
