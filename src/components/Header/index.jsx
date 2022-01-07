@@ -3,8 +3,8 @@ import SearchBar from "components/Header/SearchBar"
 import AuthButtons from "components/Header/AuthButtons"
 
 const Header = () => (
-  <header className="bg-white py-2 lg:py-0 lg:h-[124px] 2xl:h-[248px] flex flex-col lg:flex-row justify-between items-center">
-    <div className="container flex justify-between items-center">
+  <header className="bg-white py-6 lg:py-0 lg:h-[124px] 2xl:h-[248px] flex items-center">
+    <div className="container flex justify-start xl:justify-between items-center flex-col lg:flex-row ">
       <Logo />
       <SearchBar />
       <AuthButtons />

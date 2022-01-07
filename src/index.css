@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 .title {
-  @apply text-[70px] font-primary font-extralight leading-[82px] text-center;
+  @apply text-[30px] lg:text-[50px] xl:text-[70px] font-primary lg:font-extralight lg:leading-[82px] text-center;
 }
 
 .footer-link {
-  @apply font-primary uppercase font-bold leading-[41px] text-[35px] block text-dark hover:text-primary;
+  @apply font-primary uppercase font-bold leading-[41px] text-[25px] xl:text-[35px] block text-dark hover:text-primary text-center lg:text-left;
+}
+
+.button {
+  @apply font-bold flex items-center justify-center py-2 lg:py-3 w-1/2 sm:w-[200px] xl:py-0 xl:h-button xl:w-button uppercase rounded-main;
 }

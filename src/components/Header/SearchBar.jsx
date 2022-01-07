@@ -8,9 +8,8 @@ const SearchBar = () => {
   const searchRef = useRef(null)
 
   useEffect(() => {
-    if (value === "") return null
-
     const handleUserEnter = (e) => {
+      if (document.activeElement !== searchRef.current) return
       if (e.keyCode !== 13) return
 
       navigate(`/?query=${value}`)
@@ -23,18 +22,18 @@ const SearchBar = () => {
   }, [value, navigate])
 
   return (
-    <div className="relative mr-auto">
+    <div className="relative w-full sm:w-2/3 lg:w-1/4 lg:ml-[50px] xl:ml-[117px] xl:mr-auto mb-6 lg:mb-0">
       <img
         src={searchIcon}
         alt=""
-        className="absolute left-[47.3px] top-[17.4px] cursor-pointer"
+        className="absolute left-4 lg:left-[25px] xl:left-[47.3px] top-[7.5px] xl:top-[17.4px] cursor-pointer w-[25px] xl:w-auto"
         onClick={() => {
           value !== "" && navigate(`/?query=${value}`)
         }}
       />
       <input
         type="text"
-        className="`w-search h-search rounded-main outline-white bg-grey--light pl-[112px]"
+        className="w-full h-[40px] lg:w-[1/2] xl:w-search xl:h-search rounded-main outline-white bg-grey--light pl-[56px] xl:pl-[112px]"
         placeholder="Search"
         value={value}
         onChange={(e) => setValue(e.target.value)}

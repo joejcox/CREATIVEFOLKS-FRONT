@@ -1,7 +1,7 @@
 import bannerImg from "assets/images/banner_img.jpg"
 
 const Banner = () => (
-  <div className="h-[827px] w-full relative flex items-center justify-center">
+  <div className="h-[415px] lg:h-[827px] w-full relative flex items-center justify-center">
     <div className="absolute top-0 right-0 left-0 bottom-0 bg-black">
       <img
         src={bannerImg}
