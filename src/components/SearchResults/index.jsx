@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import axios from "axios"
+import GridImage from "components/SearchResults/GridImage"
 
 const SearchResults = ({ query }) => {
   const [images, setImages] = useState(null)
@@ -14,6 +15,7 @@ const SearchResults = ({ query }) => {
 
       try {
         const response = await axios.get(api)
+        console.log(response.data)
         setImages(response)
       } catch (error) {
         console.log(error)
@@ -38,15 +40,15 @@ const SearchResults = ({ query }) => {
     )
 
   return (
-    <div className="container mb-[269.5px]">
+    <main className="container mb-[269.5px]" role="main">
       <ResponsiveMasonry>
         <Masonry gutter="46px">
           {images.data.results.map((image) => (
-            <img src={image.urls.small} alt={image.user.bio} key={image.id} />
+            <GridImage image={image} key={image.id} />
           ))}
         </Masonry>
       </ResponsiveMasonry>
-    </div>
+    </main>
   )
 }
 

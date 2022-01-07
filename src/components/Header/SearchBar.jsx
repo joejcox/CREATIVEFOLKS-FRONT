@@ -26,14 +26,14 @@ const SearchBar = () => {
       <img
         src={searchIcon}
         alt=""
-        className="absolute left-4 lg:left-[25px] xl:left-[47.3px] top-[7.5px] xl:top-[17.4px] cursor-pointer w-[25px] xl:w-auto"
+        className="absolute left-4 lg:left-[25px] xl:left-[47.3px] top-[7.5px] lg:top-[12.5px] xl:top-[17.4px] cursor-pointer w-[25px] xl:w-auto"
         onClick={() => {
           value !== "" && navigate(`/?query=${value}`)
         }}
       />
       <input
         type="text"
-        className="w-full h-[40px] lg:w-[1/2] xl:w-search xl:h-search rounded-main outline-white bg-grey--light pl-[56px] xl:pl-[112px]"
+        className="w-full lg:w-[1/2] h-[40px] lg:h-[50px] xl:w-search xl:h-search rounded-main outline-white bg-grey--light pl-[56px] lg:pl-[70px] xl:pl-[112px]"
         placeholder="Search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
