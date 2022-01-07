@@ -42,9 +42,9 @@ const SearchResults = ({ query }) => {
 
   if (error) return <h2 className="text-3xl">Some error</h2>
 
-  if (loading) return <GridSkeleton />
+  if (!query) return null
 
-  if (!images) return null
+  if (loading) return <GridSkeleton />
 
   if (images.data.results.length === 0)
     return (
