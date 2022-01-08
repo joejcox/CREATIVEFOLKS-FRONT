@@ -3,10 +3,11 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import axios from "axios"
 import GridImage from "components/SearchResults/GridImage"
 import GridSkeleton from "components/SearchResults/GridSkeleton"
+// import Masonry from "react-masonry-css"
 
 const SearchResults = ({ query }) => {
   const [images, setImages] = useState(null)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -27,11 +28,16 @@ const SearchResults = ({ query }) => {
 
       try {
         const response = await axios.get(api)
+        if (response.data.total < response.data.total / 12) {
+          localStorage.setItem("pages", 1)
+          getImages()
+          return
+        }
         localStorage.setItem("pages", response.data.total_pages)
         setImages(response)
       } catch (error) {
         console.log(error)
-        setError(true)
+        setError(error)
       }
 
       setLoading(false)
@@ -40,7 +46,14 @@ const SearchResults = ({ query }) => {
     getImages()
   }, [query])
 
-  if (error) return <h2 className="text-3xl">Some error</h2>
+  if (error)
+    return (
+      <div className="container lg:mb-[269.5px] bg-grey--light py-12 lg:py-[134.75px]">
+        <h2 className="font-primary text-3xl lg:text-5xl font-light lg:font-extralight text-grey text-center">
+          {error.response.status} Error
+        </h2>
+      </div>
+    )
 
   if (!query) return null
 
@@ -54,6 +67,26 @@ const SearchResults = ({ query }) => {
         </h2>
       </div>
     )
+
+  // const breakpointColumnsObj = {
+  //   default: 3,
+  //   964: 2,
+  //   700: 1,
+  // }
+
+  // return (
+  //   <main className="container mb-[269.5px]" role="main">
+  //     <Masonry
+  //       breakpointCols={breakpointColumnsObj}
+  //       className="my-masonry-grid"
+  //       columnClassName="my-masonry-grid_column"
+  //     >
+  //       {images.data.results.map((image) => (
+  //         <GridImage image={image} key={image.id} />
+  //       ))}
+  //     </Masonry>
+  //   </main>
+  // )
 
   return (
     <main className="container mb-[269.5px]" role="main">

@@ -25,3 +25,17 @@
 .selected {
   @apply bg-grey text-white font-bold;
 }
+
+/* MASONRY */
+
+.my-masonry-grid {
+  @apply -ml-[20px] 2xl:-ml-[46px] flex flex-wrap;
+}
+.my-masonry-grid_column {
+  @apply pl-[20px] 2xl:pl-[46px] w-screen flex flex-wrap min-h-[250px];
+}
+
+/* Style your items */
+.my-masonry-grid_column > img {
+  @apply mb-[20px] 2xl:mb-[46px] w-full;
+}

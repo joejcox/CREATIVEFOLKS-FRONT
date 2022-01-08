@@ -1,6 +1,5 @@
 import ModalPortal from "./ModalPortal"
 import FocusTrap from "focus-trap-react"
-import { useState } from "react"
 
 const Modal = ({ closeModal, isOpen, data }) => {
   if (!isOpen) return null
