@@ -6,6 +6,7 @@ import SearchResults from "components/SearchResults"
 import { Routes, Route } from "react-router-dom"
 import { useSearchParams } from "react-router-dom"
 import { useEffect, useRef } from "react"
+import { Helmet } from "react-helmet-async"
 
 const App = () => {
   const [searchParams] = useSearchParams()
@@ -25,6 +26,13 @@ const App = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {query === null
+            ? "Beautiful Photography | Front"
+            : `${query} images | Front`}
+        </title>
+      </Helmet>
       <Header />
       <Banner />
       <section ref={resultsRef}>
