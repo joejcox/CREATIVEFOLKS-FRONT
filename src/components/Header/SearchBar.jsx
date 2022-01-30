@@ -26,6 +26,7 @@ const SearchBar = () => {
       <img
         src={searchIcon}
         alt=""
+        data-testid="search-icon"
         className="absolute left-4 lg:left-[25px] xl:left-[47.3px] top-[7.5px] lg:top-[12.5px] xl:top-[17.4px] cursor-pointer w-[25px] xl:w-auto"
         onClick={() => {
           value !== "" && navigate(`/?query=${value}`)

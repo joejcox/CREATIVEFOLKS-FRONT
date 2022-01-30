@@ -1,5 +1,5 @@
 const FooterLink = ({ children, href }) => (
-  <a href={href} className="footer-link">
+  <a href={href} className="footer-link" data-testid="footer-link">
     {children}
   </a>
 )
